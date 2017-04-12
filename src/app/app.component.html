@@ -1,4 +1,24 @@
 <h1>Meine erste Angular 2 App</h1>
 
-<!-- result of 1 + 1 ist printed out -->
+<!-- result of 1 + 1 ist printed out using an interpolation -->
 <p>Das Ergebnis von 1 + 1 ist {{ 1 + 1 }}</p>
+
+<!-- greeting the user with username variable of AppComponent class using an
+     interpolation -->
+<p>Hallo, {{ username }}!</p>
+
+<!-- print out the users name and email from the instance of the User interface
+     using two interpolations -->
+<p>Hallo, {{ currentUser.username }} - {{ currentUser.email }}</p>
+
+<!-- print out the users name and email from the instance of the User interface
+     using one interpolation and string concatination -->
+<p>Hallo, {{ currentUser.username + ' - ' + currentUser.email }}</p>
+
+<!-- print out the username from the instance of the User interface using
+     the getter function of the User -->
+<p>Hallo, {{ getUsername() }}!</p>
+
+<!-- creating an input field with an value of the username from the instance
+     of the User interface using the getter function of the User -->
+<input value="{{ getUsername() }}" type="text"/>
