@@ -6,22 +6,28 @@
   <!-- set a hidden property (property binding) to p tag with the value of the
        private variable hideEmail, em tag is for italic layout of email -->
   <p [hidden] = "hideEmail">Deine E-Mail Adresse ist: <em>{{ currentUser.email }}</em></p>
+
+  <!-- call function toggle to hide email on click -->
+  <button (click) = "toggle()">Verstecken / Anzeigen (Klicken)</button>
 </div>
 
-<!-- bind value of variable disabledInput to property disabled -->
+<!-- call function toggle to hide email on mouseleave -->
+<button (mouseleave) = "toggle()">Verstecken / Anzeigen (Verlassen des Buttons mit der Maus)</button>
+
+<!-- bind value of variable disabledInput to property disabled
 <input [disabled] = "disabledInput" type="text" placeholder="Gib hier etwas ein"/>
 
-<!-- bind return value of function isDisabled to property disabled -->
+bind return value of function isDisabled to property disabled
 <input [disabled] = "isDisabled()" type="text" placeholder="Gib hier etwas ein"/>
 
-<!-- bind return value of function isDisabled to property disabled, bind the
-     value of username property of instance of Users interface to property value -->
+bind return value of function isDisabled to property disabled, bind the
+     value of username property of instance of Users interface to property value
 <input [disabled] = "isDisabled()" type="text"
        [value] ="currentUser.username" placeholder="Gib hier etwas ein"/>
 
-<!-- bind value of variable isBlueBg to property class blue-bg -->
+bind value of variable isBlueBg to property class blue-bg
 <input [class.blue-bg] = "isBlueBg" type="text" placeholder="Gib hier etwas ein"/>
 
-<!-- bind value of variable bgColor (string) to property style background-color
-     of input field -->
-<input [style.background-color] = "bgColor" type="text" placeholder="Gib hier etwas ein"/>
+bind value of variable bgColor (string) to property style background-color
+     of input field
+<input [style.background-color] = "bgColor" type="text" placeholder="Gib hier etwas ein"/>-->
