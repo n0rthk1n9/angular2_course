@@ -11,10 +11,49 @@
   <button (click) = "toggle()">Verstecken / Anzeigen (Klicken)</button>
 </div>
 
-<!-- call function toggle to hide email on mouseleave -->
+<!-- wrong example of using a reference -->
+<div>
+  <input type="text" #a/>
+  <p>Der Wert der Eingabe ist: {{ a.value }}</p>
+</div>
+
+<!-- right example of using a reference -->
+<div>
+  <input type="text" #b (keyup) = "0"/>
+  <p>Der Wert der Eingabe ist: {{ b.value }}</p>
+</div>
+
+<!-- change email on button click and take value out of input passing it
+     into changeMail function -->
+<div>
+  <h3>E-Mail ändern: (Button anklicken)</h3>
+  <input type="text" name="newMail" #newMail>
+  <button (click) = "changeMail(newMail.value)">ändern</button>
+</div>
+
+<!-- change email on button click or on pressing enter passing keyup event
+     to keyPressed function which checks wether enter key was pressed. If enter
+     key was pressed or button was clicked take value of input passing it to
+     changeMail funtion -->
+<div>
+  <h3>E-Mail ändern: (Enter drücken)</h3>
+  <input type="text" name="newMailKeyUp" #newMailKeyUp (keyup) = "keyPressed($event)">
+  <button (click) = "changeMail(newMailKeyUp.value)">ändern</button>
+</div>
+
+<!-- change email on button click or on pressing enter. If enter
+     key was pressed or button was clicked take value of input passing it to
+     changeMail funtion -->
+<div>
+  <h3>E-Mail ändern: (Enter drücken (ohne eigene Funktion))</h3>
+  <input type="text" name="newMailEnterUp" #newMailEnterUp (keyup.enter) = "changeMail(newMailEnterUp.value)">
+  <button (click) = "changeMail(newMailEnterUp.value)">ändern</button>
+</div>
+
+<!-- call function toggle to hide email on mouseleave
 <button (mouseleave) = "toggle()">Verstecken / Anzeigen (Verlassen des Buttons mit der Maus)</button>
 
-<!-- bind value of variable disabledInput to property disabled
+bind value of variable disabledInput to property disabled
 <input [disabled] = "disabledInput" type="text" placeholder="Gib hier etwas ein"/>
 
 bind return value of function isDisabled to property disabled

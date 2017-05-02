@@ -33,6 +33,16 @@ export class AppComponent  {
     this.hideEmail = !this.hideEmail
   }
 
+  private changeMail(newMail: string) {
+    this.currentUser.email = newMail
+  }
+
+  private keyPressed(event: KeyboardEvent) {
+    if (event.keyCode == 13) {
+      var inputElement = <HTMLInputElement>event.target
+      this.changeMail(inputElement.value)
+    }
+  }
 
 }
 

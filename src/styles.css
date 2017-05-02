@@ -4,6 +4,6 @@ h1 {
   font-size: 250%;
 }
 
-p {
+p, h3 {
   font-family: Arial, Helvetica, sans-serif;
 }
