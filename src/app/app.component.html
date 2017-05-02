@@ -1,56 +1,74 @@
 <h1>Meine erste Angular 2 App</h1>
 
 <div>
-  <!-- display username value of currentUser instance of User interface -->
+  <p>Hallo, {{ currentUser.username }}</p>
+  <!-- create p element with email based on if clause on value of hideEmail -->
+  <p *ngIf = "!hideEmail">Deine E-Mail Adresse ist: <em>{{ currentUser.email }}</em></p>
+  <button (click) = "toggle()">verstecken / anzeigen</button>
+</div>
+
+<ul>
+  <!-- create as many li elements as array users has elements.
+       ! careful !
+       old angular syntax: #user of users, #i = index
+       new angular syntax: let user of users, let i = index -->
+  <li *ngFor = "let user of users, let i = index">
+    ({{ i + 1 }}) {{ user.username }} - <em>{{ user.email }}</em>
+  </li>
+</ul>
+
+<!--
+<div>
+   display username value of currentUser instance of User interface
   <p>Hallo, {{ currentUser.username }}!</p>
-  <!-- set a hidden property (property binding) to p tag with the value of the
-       private variable hideEmail, em tag is for italic layout of email -->
+   set a hidden property (property binding) to p tag with the value of the
+       private variable hideEmail, em tag is for italic layout of email
   <p [hidden] = "hideEmail">Deine E-Mail Adresse ist: <em>{{ currentUser.email }}</em></p>
 
-  <!-- call function toggle to hide email on click -->
+   call function toggle to hide email on click
   <button (click) = "toggle()">Verstecken / Anzeigen (Klicken)</button>
 </div>
 
-<!-- wrong example of using a reference -->
+ wrong example of using a reference
 <div>
   <input type="text" #a/>
   <p>Der Wert der Eingabe ist: {{ a.value }}</p>
 </div>
 
-<!-- right example of using a reference -->
+ right example of using a reference
 <div>
   <input type="text" #b (keyup) = "0"/>
   <p>Der Wert der Eingabe ist: {{ b.value }}</p>
 </div>
 
-<!-- change email on button click and take value out of input passing it
-     into changeMail function -->
+ change email on button click and take value out of input passing it
+     into changeMail function
 <div>
   <h3>E-Mail ändern: (Button anklicken)</h3>
   <input type="text" name="newMail" #newMail>
   <button (click) = "changeMail(newMail.value)">ändern</button>
 </div>
 
-<!-- change email on button click or on pressing enter passing keyup event
+ change email on button click or on pressing enter passing keyup event
      to keyPressed function which checks wether enter key was pressed. If enter
      key was pressed or button was clicked take value of input passing it to
-     changeMail funtion -->
+     changeMail funtion
 <div>
   <h3>E-Mail ändern: (Enter drücken)</h3>
   <input type="text" name="newMailKeyUp" #newMailKeyUp (keyup) = "keyPressed($event)">
   <button (click) = "changeMail(newMailKeyUp.value)">ändern</button>
 </div>
 
-<!-- change email on button click or on pressing enter. If enter
+ change email on button click or on pressing enter. If enter
      key was pressed or button was clicked take value of input passing it to
-     changeMail funtion -->
+     changeMail funtion
 <div>
   <h3>E-Mail ändern: (Enter drücken (ohne eigene Funktion))</h3>
   <input type="text" name="newMailEnterUp" #newMailEnterUp (keyup.enter) = "changeMail(newMailEnterUp.value)">
   <button (click) = "changeMail(newMailEnterUp.value)">ändern</button>
 </div>
 
-<!-- call function toggle to hide email on mouseleave
+call function toggle to hide email on mouseleave
 <button (mouseleave) = "toggle()">Verstecken / Anzeigen (Verlassen des Buttons mit der Maus)</button>
 
 bind value of variable disabledInput to property disabled

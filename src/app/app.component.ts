@@ -33,16 +33,24 @@ export class AppComponent  {
     this.hideEmail = !this.hideEmail
   }
 
-  private changeMail(newMail: string) {
-    this.currentUser.email = newMail
-  }
+  // array of type User (interface below) which contains 4 different users
+  private users: Array<User> = [
+    { username: "Jan" , email: "jan@apple.com" },
+    { username: "Maike" , email: "maike@apple.com" },
+    { username: "Balou" , email: "balou@apple.com" },
+    { username: "Pumbaa" , email: "pumbaa@apple.com" }
+  ]
 
-  private keyPressed(event: KeyboardEvent) {
-    if (event.keyCode == 13) {
-      var inputElement = <HTMLInputElement>event.target
-      this.changeMail(inputElement.value)
-    }
-  }
+  // private changeMail(newMail: string) {
+  //   this.currentUser.email = newMail
+  // }
+  //
+  // private keyPressed(event: KeyboardEvent) {
+  //   if (event.keyCode == 13) {
+  //     var inputElement = <HTMLInputElement>event.target
+  //     this.changeMail(inputElement.value)
+  //   }
+  // }
 
 }
 
