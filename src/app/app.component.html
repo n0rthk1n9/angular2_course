@@ -1,23 +1,67 @@
-<h1>Meine erste Angular 2 App</h1>
+<h1>Persönliche Finanzen</h1>
+
+<div>
+  <h2>Deine Bankkonten</h2>
+  <!-- display error to screen if the length of accounts array is equal to zero -->
+  <p *ngIf = "!_accounts || _accounts.length == 0">Du hast noch keine Bankkonten.
+    Bitte erstelle ein neues Konto.</p>
+  <!-- display every element of accounts array in own div on screen -->
+  <div *ngFor = "let acc of _accounts, let i = index">
+    <h3>{{ acc.id }}. {{ acc.title }}</h3>
+    <p>{{ acc.description }}</p>
+    <p>Saldo: <strong>{{ acc.balance }}</strong></p>
+    <!-- call method removeAcc with index of specific account which i want to delete -->
+    <button type="button" name="removeAccountButton" (click) = "removeAcc(i)">Konto löschen</button>
+    <br>
+    <br>
+  </div>
+</div>
+
+<div>
+  <!-- textfields and inputs for adding a new bank account -->
+  <div>
+    <label for="title">Kontoname: </label>
+    <input id="title" type="text" name="title" value="" #title>
+  </div>
+
+  <div>
+    <label for="description">Beschreibung: </label>
+    <input id="description" type="text" name="description" value="" #description>
+  </div>
+
+  <div>
+    <label for="balance">Kontostand: </label>
+    <input id="balance" type="text" name="balance" value="" #balance>
+  </div>
+
+  <div>
+    <!-- on button click the html elements of three relevant input fields with references are
+         passed to function createAcc -->
+    <button type="button" name="createAccount" (click) = "createAcc(title, description, balance)">Erstellen</button>
+  </div>
+</div>
+
+
+<!-- <h1>Meine erste Angular 2 App</h1>
 
 <div>
   <p>Hallo, {{ currentUser.username }}</p>
-  <!-- create p element with email based on if clause on value of hideEmail -->
+   create p element with email based on if clause on value of hideEmail
   <p *ngIf = "!hideEmail">Deine E-Mail Adresse ist: <em>{{ currentUser.email }}</em></p>
   <button (click) = "toggle()">verstecken / anzeigen</button>
 </div>
 
 <ul>
-  <!-- create as many li elements as array users has elements.
+   create as many li elements as array users has elements.
        ! careful !
        old angular syntax: #user of users, #i = index
-       new angular syntax: let user of users, let i = index -->
+       new angular syntax: let user of users, let i = index
   <li *ngFor = "let user of users, let i = index">
     ({{ i + 1 }}) {{ user.username }} - <em>{{ user.email }}</em>
   </li>
 </ul>
 
-<!--
+
 <div>
    display username value of currentUser instance of User interface
   <p>Hallo, {{ currentUser.username }}!</p>

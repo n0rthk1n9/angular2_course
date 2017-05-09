@@ -1,0 +1,18 @@
+// class for storing information about a bank account
+export class Account {
+
+  public id: number
+
+  public title: string
+
+  public description: string
+
+  public balance: number
+
+  public constructor(id: number, title: string, description: string, balance: number) {
+    this.id = id
+    this.title = title
+    this.description = description
+    this.balance = balance
+  }
+}
