@@ -1,0 +1,13 @@
+.account {
+  border-bottom: 1px solid #DDD;
+  padding: 12px 24px;
+  background-color: #F7F7F9
+}
+
+.account:first-child {
+  border-top: 1px solid #DDD;
+}
+
+.account:hover {
+  background-color: #8CCE40;
+}

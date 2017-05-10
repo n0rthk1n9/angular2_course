@@ -1,0 +1,30 @@
+<!-- display error to screen if the length of accounts array is equal to zero
+     added class to style element -->
+<div class = "row" *ngIf = "!_accounts || _accounts.length == 0">
+  <!-- added boostrap class for alert style error message -->
+  <div class="alert alert-info">
+    <strong>Du hast noch keine Bankkonten.</strong> Bitte erstelle ein neues Konto.
+  </div>
+</div>
+<!-- display every element of accounts array in own div on screen
+    added class to style element -->
+<div class="row">
+  <div class = "account col-md-12" *ngFor = "let acc of _accounts, let i = index"
+       [ngClass] = "{
+         'selected': _selected[i]
+       }">
+    <h3>{{ acc.id }}. {{ acc.title }}</h3>
+    <p>{{ acc.description }}</p>
+    <p>Saldo: <strong class="lead">{{ acc.balance }}</strong></p>
+
+    <div class="row">
+      <div class="col-md-3">
+        <!-- call method removeAcc with index of specific account which i want to delete -->
+        <button class="btn btn-danger" type="button" name="removeAccountButton" (click) = "removeAcc(i)">Konto löschen</button>
+        <button class="btn btn-primary" type="button" name="selectDeselectAccountButton" (click) = "select(i)">
+          {{ _selected[i] ? 'Nicht Auswählen' : 'Auswählen' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

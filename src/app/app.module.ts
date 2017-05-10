@@ -3,9 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
 
+// integrated new file AccountsList into the whole app
+import { AccountsList } from './account/accounts_list.component';
+
 @NgModule({
   imports:      [ BrowserModule ],
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent, AccountsList ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
