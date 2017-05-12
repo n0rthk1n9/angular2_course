@@ -13,6 +13,21 @@ import { Account } from './account/account.model';
 // export class so that it can be imported from anywhere
 export class AppComponent  {
 
+  // create array of type Account with two instances of Account in it created in
+  // two different ways, first by connecting values directly to the parameters
+  // and second using the constructor of Account
+  private _accounts: Array<Account> = [
+    {
+      id: 1,
+      title: "N26 Bank",
+      description: "Das ist mein Standard Account",
+      balance: 3496.23
+    },
+    new Account(2, "Züricher Kantonalbank", "Mein geheimes schweizer Nummernkonto", 102348.23)
+  ]
+
+  private _selected: Array<boolean> = [false, false]
+
   // variable to get a unique id for each Account in acconts array
   private _nextId = 3
 
@@ -29,6 +44,17 @@ export class AppComponent  {
     description.value = ""
     balance.value = 0
   }
+
+  // remove one instance of Account class from array accounts
+  private removeAcc(index: number) {
+    this._accounts.splice(index, 1)
+    // remove selected status from selected array
+    // this._selected.splice(index, 1)
+  }
+
+  // private select(index: number) {
+  //   this._selected[index] = !this._selected[index]
+  // }
 
   // instance of interface User filled with data
   // private currentUser: User = { username: "angularpro", email: "angularpro@gmail.com" }

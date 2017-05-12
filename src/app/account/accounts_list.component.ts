@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Account } from './account.model';
 
 @Component({
@@ -10,29 +10,16 @@ import { Account } from './account.model';
 // created a new seperated file for things related to the account list displayed
 // on the webpage
 export class AccountsList {
-  // create array of type Account with two instances of Account in it created in
-  // two different ways, first by connecting values directly to the parameters
-  // and second using the constructor of Account
-  private _accounts: Array<Account> = [
-    {
-      id: 1,
-      title: "N26 Bank",
-      description: "Das ist mein Standard Account",
-      balance: 3496.23
-    },
-    new Account(2, "Züricher Kantonalbank", "Mein geheimes schweizer Nummernkonto", 102348.23)
-  ]
 
-  private _selected: Array<boolean> = [false, false]
+  // @Input flag opens variable _accounts for input from accounts
+  @Input('accounts') _accounts: Array<Account>;
 
-  // remove one instance of Account class from array accounts
-  private removeAcc(index: number) {
-    this._accounts.splice(index, 1)
-    // remove selected status from selected array
-    this._selected.splice(index, 1)
+  // EventEmitter on which other services or components can subscribe
+  @Output('delete') delete = new EventEmitter<Number>();
+
+  // event emitter emits index of bank account that should be deleted
+  private _remove(index: number) {
+    this.delete.emit(index)
   }
 
-  private select(index: number) {
-    this._selected[index] = !this._selected[index]
-  }
 }
