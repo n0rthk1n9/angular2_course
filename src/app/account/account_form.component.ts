@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Account } from './account.model';
 
 @Component({
@@ -8,5 +8,18 @@ import { Account } from './account.model';
 })
 
 export class AccountForm {
+
+  @Output() created = new EventEmitter<Account>();
+
+  private createAcc(title: any, description: any, balance: any) {
+    var newAccount: Account = new Account(0, title.value, description.value, balance.value);
+    this.created.emit(newAccount);
+
+    title.value = "";
+    description.value = "";
+    balance.value = 0;
+  }
+
+
 
 }

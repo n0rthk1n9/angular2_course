@@ -34,15 +34,20 @@ export class AppComponent  {
   // method to create a new instance of Account in the accounts array with the
   // constructor of class Account. New instance of Account is pushed into accounts
   // array. After this inputfields of website are set to blank and zero
-  private createAcc(title: any, description: any, balance: any) {
-    // this._accounts.push(new Account(this._nextId, title.value, description.value, balance.value))
-    // // push selected state of account to selected array
-    // this._selected.push(false)
-    // this._nextId++
+  // private createAcc(title: any, description: any, balance: any) {
+  //   // this._accounts.push(new Account(this._nextId, title.value, description.value, balance.value))
+  //   // // push selected state of account to selected array
+  //   // this._selected.push(false)
+  //   // this._nextId++
+  //
+  //   title.value = ""
+  //   description.value = ""
+  //   balance.value = 0
+  // }
 
-    title.value = ""
-    description.value = ""
-    balance.value = 0
+  private createAcc(newAccount: Account) {
+    newAccount.id = this._nextId++;
+    this._accounts.push(newAccount);
   }
 
   // remove one instance of Account class from array accounts
